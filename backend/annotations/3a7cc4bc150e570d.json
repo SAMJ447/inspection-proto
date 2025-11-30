@@ -1,0 +1,87 @@
+{
+  "drawing_id": "3a7cc4bc150e570d",
+  "annotations": [
+    {
+      "id": "db878414-06c4-4ac9-a5b8-80a345315ba9",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "page": 0,
+      "x": 93.5,
+      "y": 172.3828125,
+      "w": 522,
+      "h": 173
+    },
+    {
+      "id": "8fe12cee-b13d-4045-98a0-f9a0c976e17f",
+      "type": "text",
+      "x": 48.5,
+      "y": 85.3828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "page": 0,
+      "text": "Area inspected and signed off"
+    },
+    {
+      "id": "ddc8d747-543e-4fe7-aaf8-235ffb7abc84",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "page": 0,
+      "x": 73.5,
+      "y": 88.3828125,
+      "x2": 99.5,
+      "y2": 174.3828125
+    },
+    {
+      "id": "a5d3829d-d7f1-438c-acea-e2eafe41dd50",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "page": 0,
+      "x": 53.5,
+      "y": 154.3828125,
+      "x2": 53.5,
+      "y2": 154.3828125
+    },
+    {
+      "id": "b86f2eb9-4d82-4a65-b2b7-118ee6ab66e0",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "page": 0,
+      "x": 233.5,
+      "y": 262.3828125,
+      "x2": 257.5,
+      "y2": 402.3828125
+    },
+    {
+      "id": "7b113b0a-f363-425c-8132-5913018e1e5d",
+      "type": "text",
+      "x": 131.5,
+      "y": 409.3828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "page": 0,
+      "text": "Beam shows bending.EOR review is required"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "drawing_id": "41ea019169a393f25a3539c2eb960f2d260fa69279f63e8a1840a441ecc4e085",
+  "annotations": [
+    {
+      "id": "fa004322-ea8f-4add-a5c1-e8f3702e2892",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 447.5,
+      "y": 249.3828125,
+      "w": 309,
+      "h": 351
+    },
+    {
+      "id": "5c1e8bf8-c2db-4ba6-b995-6373f619a6a3",
+      "type": "text",
+      "x": 467.5,
+      "y": 276.8828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "text": "Welding of WT with ex beam"
+    },
+    {
+      "id": "9ecb0f17-90df-4c17-ae6a-b90db8765705",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "x": 559.5,
+      "y": 277.8828125,
+      "x2": 493.5,
+      "y2": 330.8828125
+    },
+    {
+      "id": "e548e7da-fae0-4a7f-9bc8-0f45b7395caa",
+      "type": "text",
+      "x": 642.5,
+      "y": 303.8828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "text": "11/25/25"
+    },
+    {
+      "id": "42202303-4dbb-4200-ab92-5bca03ea3c87",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "x": 312.5,
+      "y": 283.8828125,
+      "w": 117,
+      "h": 133
+    },
+    {
+      "id": "10b2e9ea-c38e-49d2-82ff-c3e83f2aea5a",
+      "type": "text",
+      "x": 259.5,
+      "y": 247.8828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "text": "Existing beam W14X55"
+    },
+    {
+      "id": "700a907b-434d-44f3-ba0e-01b7e41732f8",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "x": 329.5,
+      "y": 247.8828125,
+      "x2": 346.5,
+      "y2": 316.8828125
+    },
+    {
+      "id": "a8da1708-97f2-40c3-865a-cfdccf5656dc",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "x": 254.5,
+      "y": 281.8828125,
+      "x2": 254.5,
+      "y2": 281.8828125
+    },
+    {
+      "id": "80655135-ff2c-4feb-bb06-0fdc4ea8926a",
+      "type": "text",
+      "x": 274.5,
+      "y": 195.8828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "note": "",
+      "status": "open",
+      "photos": [],
+      "text": "11/22/25"
+    }
+  ]
+}

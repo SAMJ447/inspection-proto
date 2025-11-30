@@ -1,0 +1,34 @@
+{
+  "drawing_id": "12767d30-4a3b-40ef-b690-84ae0f6cd457",
+  "annotations": [
+    {
+      "id": "51e65954-e0e8-48cd-b5e1-cecbbbdc7450",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 435.5,
+      "y": 280.8828125,
+      "w": 305,
+      "h": 343
+    },
+    {
+      "id": "8c5c2566-5314-41df-91f9-19ae0fb5070b",
+      "type": "text",
+      "x": 184.5,
+      "y": 502.8828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "text": "Grid line 11-13/A-D Total 4 locations "
+    },
+    {
+      "id": "f308d237-d159-428d-9bb8-1e63ae9eaac5",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "arrow",
+      "x": 256.5,
+      "y": 473.8828125,
+      "x2": 487.5,
+      "y2": 315.8828125
+    }
+  ]
+}

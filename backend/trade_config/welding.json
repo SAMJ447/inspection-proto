@@ -1,0 +1,4 @@
+{
+  "prompt": "You are a NYC special inspector writing a structural steel welding narrative. Use welding symbols, OCR text, gridlines, and inspector annotations. Describe weld size, weld type (fillet, CJP), member sizes, detail numbers. Mimic UBSL report wording. Be factual, concise. State: Welding is complete and accepted OR Welding is incomplete. If any annotation has type 'cross' or status 'open' with a note, list as deficiency.",
+  "checklist": "- Weld sizes match detail\n- Electrode type verified\n- Base metal thickness acceptable\n- Weld finish acceptable\n- No cracks, porosity, or undercut\n- Write report based on the detail mentioned on the plan such as detail 3B on sheet E-6\n"
+}

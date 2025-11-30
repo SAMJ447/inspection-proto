@@ -1,0 +1,104 @@
+{
+  "drawing_id": "94692b49-d89d-4090-b430-c88b5f83cb45",
+  "annotations": [
+    {
+      "id": "3dcb4c62-7533-4a7e-ae84-d1d1e301b017",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 404.5,
+      "y": 204.3828125,
+      "w": 337,
+      "h": 295
+    },
+    {
+      "id": "0ded0f6e-c154-4efd-bb1b-56a94176aa09",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 739.5,
+      "y": 496.3828125,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "id": "56b8cf0e-8527-4524-9aa1-4d91bbdda227",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 737.5,
+      "y": 497.3828125,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "7740ba20-9be3-4619-96ef-1426aab29e61",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 434.5,
+      "y": 205.3828125,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "id": "fa86e34e-753e-480e-b6eb-5891aefc6dae",
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "type": "rect",
+      "x": 441.5,
+      "y": 201.3828125,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "id": "70377de1-80d6-4ecc-8106-e16f845f1f55",
+      "type": "text",
+      "x": 420.5,
+      "y": 223.3828125,
+      "stroke": "#ff0000",
+      "fill": "transparent",
+      "text": "Welding of WT with ex beam"
+    },
+    {
+      "id": "3e5a9e3c-9956-42e8-9216-c27847f024d1",
+      "stroke": "#ff0000",
+      "fill": "#ffff00",
+      "type": "highlight",
+      "x": 484.5,
+      "y": 311.3828125,
+      "w": 14,
+      "h": 63
+    },
+    {
+      "id": "c6fafc2f-b119-4ea0-84e7-6d69c5a4e54d",
+      "stroke": "#ff0000",
+      "fill": "#ffff00",
+      "type": "highlight",
+      "x": 484.5,
+      "y": 404.3828125,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "id": "8a9f5f4c-ef0d-4068-8c1d-e35ff9afdb17",
+      "stroke": "#0011ff",
+      "fill": "#ffff00",
+      "type": "highlight",
+      "x": 490.5,
+      "y": 310.3828125,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "id": "1feada12-6789-4f86-9594-638d2de22fdf",
+      "stroke": "#0011ff",
+      "fill": "#ffff00",
+      "type": "highlight",
+      "x": 490.5,
+      "y": 310.3828125,
+      "w": 0,
+      "h": 0
+    }
+  ]
+}

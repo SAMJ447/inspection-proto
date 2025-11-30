@@ -1,0 +1,188 @@
+import os
+import uuid
+from pathlib import Path
+from typing import Any, Dict, List
+
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+
+# ---- OpenAI (legacy SDK style) ----
+try:
+    import openai
+except ImportError:  # openai not installed
+    openai = None
+
+if openai is not None:
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+
+
+# ---------- Paths & setup ----------
+BASE_DIR = Path(__file__).resolve().parent
+UPLOAD_DIR = BASE_DIR / "uploads"
+ANNOTATIONS_DIR = BASE_DIR / "annotations"
+
+UPLOAD_DIR.mkdir(exist_ok=True)
+ANNOTATIONS_DIR.mkdir(exist_ok=True)
+
+app = FastAPI(title="Construction Inspection Report Prototype")
+
+# CORS for local Next.js
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
+
+
+# ---------- Pydantic models ----------
+class GenerateReportRequest(BaseModel):
+    drawing_id: str
+    trade_type: str
+    project_info: str
+    annotations: List[Dict[str, Any]]
+
+
+class SaveAnnotationsRequest(BaseModel):
+    drawing_id: str
+    annotations: List[Dict[str, Any]]
+
+
+class LoadAnnotationsRequest(BaseModel):
+    drawing_id: str
+
+
+# ---------- Helper paths ----------
+def get_drawing_path(drawing_id: str) -> Path:
+    return UPLOAD_DIR / f"{drawing_id}.bin"
+
+
+def get_annotations_path(drawing_id: str) -> Path:
+    return ANNOTATIONS_DIR / f"{drawing_id}.json"
+
+
+# ---------- Routes ----------
+
+@app.post("/upload-drawing")
+async def upload_drawing(file: UploadFile = File(...)) -> Dict[str, str]:
+    """
+    Save the uploaded file and return a drawing_id.
+    """
+    drawing_id = str(uuid.uuid4())
+    file_path = get_drawing_path(drawing_id)
+
+    contents = await file.read()
+    with open(file_path, "wb") as f:
+        f.write(contents)
+
+    return {"drawing_id": drawing_id}
+
+
+@app.post("/save-annotations")
+async def save_annotations(req: SaveAnnotationsRequest) -> Dict[str, str]:
+    """
+    Save annotations JSON to disk under annotations/<drawing_id>.json
+    """
+    path = get_annotations_path(req.drawing_id)
+
+    try:
+        import json
+
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(
+                {
+                    "drawing_id": req.drawing_id,
+                    "annotations": req.annotations,
+                },
+                f,
+                ensure_ascii=False,
+                indent=2,
+            )
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to save annotations: {exc}")
+
+    return {"status": "ok"}
+
+
+@app.post("/load-annotations")
+async def load_annotations(req: LoadAnnotationsRequest) -> Dict[str, Any]:
+    """
+    Load annotations JSON from disk. If none exist, return 404.
+    """
+    path = get_annotations_path(req.drawing_id)
+    if not path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="No saved annotations for this drawing_id",
+        )
+
+    try:
+        import json
+
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to read annotations: {exc}")
+
+    return {"annotations": data.get("annotations", [])}
+
+
+@app.post("/generate-report")
+async def generate_report(payload: GenerateReportRequest) -> Dict[str, str]:
+    """
+    Call OpenAI (legacy chat API) with trade_type, project_info, annotations JSON,
+    return plain-text report.
+
+    If OpenAI isn't configured, return a simple fallback message.
+    """
+    annotations_summary = {
+        "count": len(payload.annotations),
+        "items": payload.annotations[:20],  # avoid huge context
+    }
+
+    # If OpenAI is not available or no API key, return dummy text
+    if openai is None or not getattr(openai, "api_key", None):
+        fallback = (
+            "OpenAI API key not configured. "
+            "Here is a placeholder inspection note.\n\n"
+            f"Trade type: {payload.trade_type}\n"
+            f"Project info: {payload.project_info}\n"
+            f"Annotations count: {annotations_summary['count']}"
+        )
+        return {"report_text": fallback}
+
+    system_prompt = (
+        "You are a construction inspector writing short, simple inspection notes.\n"
+        "Use the trade type, short project info, and annotations JSON to write a "
+        "1–2 paragraph inspection note in plain English.\n"
+        "Focus only on what can reasonably be inferred from the text/annotations, "
+        "do not invent specific dimensions if they are not explicitly given.\n"
+    )
+
+    user_content = (
+        f"Trade type: {payload.trade_type}\n"
+        f"Project info: {payload.project_info}\n\n"
+        f"Annotations JSON (summary): {annotations_summary}\n\n"
+        "Write the inspection note now."
+    )
+
+    try:
+        # legacy ChatCompletion API
+        resp = openai.ChatCompletion.create(
+            model="gpt-4o-mini",  # or another model you have
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content},
+            ],
+            max_tokens=250,
+        )
+        report_text = resp["choices"][0]["message"]["content"].strip()
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"OpenAI error: {exc}")
+
+    return {"report_text": report_text}
